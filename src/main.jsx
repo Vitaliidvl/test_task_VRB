@@ -2,16 +2,21 @@ import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import App from './App.jsx';
 import './index.css';
-// import MovieDetail from './components/pages/MovieDetail.jsx';
+import MovieDetail from './components/pages/MovieDetail.jsx';
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <App />,
+    errorElement: <h1>404 not found</h1>,
+  },
+  {
+    path: '/details',
+    element: <MovieDetail />,
     children: [
       {
-        path: '/movie-detail',
-        element: <h1>dddd</h1>,
+        path: '/details/:movieId',
+        element: <MovieDetail />,
       },
     ],
   },

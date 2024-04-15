@@ -1,34 +1,51 @@
 import { useState, useEffect } from 'react';
+import { useParams, Link } from 'react-router-dom';
 
-function MovieDetail({ match }) {
+function MovieDetail() {
   const [movie, setMovie] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  const { movieId } = useParams();
+  console.log(movieId);
 
   useEffect(() => {
     const fetchMovie = async () => {
-      const response = await fetch(
-        `http://localhost:3000/movies/${match.params.id}`
-      );
-      if (!response.ok) {
-        throw new Error('Failed to fetch movie');
-      }
-      const data = await response.json();
-      setMovie(data);
-    };
-    fetchMovie();
-  }, [match.params.id]);
+      try {
+        const response = await fetch(
+          `http://localhost:3000/movies/${+movieId + 1}`
+        );
 
-  if (!movie) {
+        if (!response.ok) {
+          throw new Error('Failed to fetch movie');
+        }
+
+        const data = await response.json();
+        setMovie(data);
+        setIsLoading(false);
+      } catch (error) {
+        setError(error.message);
+        setIsLoading(false);
+      }
+    };
+
+    fetchMovie();
+  }, [movieId]);
+
+  if (isLoading) {
     return <p>Loading...</p>;
   }
 
+  if (error) {
+    return <p>{error}</p>;
+  }
+
   return (
-    <div>
-      <h2>{movie.title}</h2>
-      <p>Rating: {movie.rating}</p>
-      <p>Release Date: {movie.releaseDate}</p>
-      <p>Description: {movie.description}</p>
-      {/* Add other movie details here */}
-    </div>
+    <>
+      <h1>Title: {movie.title}</h1>
+      <h2>Plot: {movie.description}</h2>
+      <Link to="/">Back to homepage</Link>
+    </>
   );
 }
 
