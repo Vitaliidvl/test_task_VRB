@@ -1,4 +1,3 @@
-// import { Link } from 'react-router-dom';
 import classes from './Movie.module.css';
 
 const Movie = ({ title, releaseDate, rating, image }) => {
