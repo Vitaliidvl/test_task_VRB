@@ -36,7 +36,7 @@
 .link:hover{
   color: grey
 }
-
+/* Add styles for the button */
 .button {
   font: inherit;
   cursor: pointer;
@@ -45,7 +45,17 @@
   color: white;
   padding: 0.75rem 2rem;
   border-radius: 20px;
+  transition: background-color 0.3s ease;
 }
+
+.button:hover {
+  background-color: #3a0061;
+}
+
+.button:active {
+  background-color: #1a0030;
+}
+
 
 .control {
   margin: 1rem 0;

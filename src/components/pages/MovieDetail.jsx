@@ -113,9 +113,9 @@ function MovieDetail() {
             Delete
           </button>{' '}
           <button onClick={toggleFavorite} className={classes.button}>
-            <FaHeart color={isFavorite ? 'red' : 'gray'} />
             {isFavorite ? ' Remove from Favorites' : ' Add to Favorites'}
           </button>
+          <FaHeart color={isFavorite ? 'red' : 'gray'} />
           <h1>{movie.title}</h1>
           <p>Description: {movie.description}</p>
           <p>Actors: {movie.actors}</p>
