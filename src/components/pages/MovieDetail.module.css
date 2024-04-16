@@ -1,0 +1,38 @@
+
+.movie {
+  width: 600px;
+  margin: 1rem auto;
+  padding: 1rem;
+  background-color: #230052;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+  border-radius: 12px;
+  text-align: center;
+  color: white;
+}
+
+.movie h1 {
+  font-size: 2rem;
+  color: #f7e702;
+}
+
+.movie p {
+  color: #eccf77;
+  margin: 0;
+  font-size: 1rem;
+}
+
+.image {
+  width: 220px; 
+  height: 327px; 
+  object-fit: cover; 
+  border-radius: 8px; 
+}
+
+.link{
+  color: aliceblue;
+  cursor: pointer;
+  text-decoration: none;
+}
+.link:hover{
+  color: grey
+}

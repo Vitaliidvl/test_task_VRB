@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
+import classes from '../pages/MovieDetail.module.css';
 
 function MovieDetail() {
   const [movie, setMovie] = useState(null);
@@ -41,11 +42,17 @@ function MovieDetail() {
   }
 
   return (
-    <>
-      <h1>Title: {movie.title}</h1>
-      <h2>Plot: {movie.description}</h2>
-      <Link to="/">Back to homepage</Link>
-    </>
+    <div className={classes.movie}>
+      <h1>{movie.title}</h1>
+      <p>Description: {movie.description}</p>
+      <p>Actors: {movie.actors.join(', ')}</p>
+      <p>Director: {movie.director}</p>
+      <p>Genre: {movie.genre.join(', ')}</p>
+      <p>Rating: {movie.rating}</p>
+      <Link className={classes.link} to="/">
+        Back to homepage
+      </Link>
+    </div>
   );
 }
 
