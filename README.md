@@ -1,4 +1,4 @@
-
+#To run this progect use this steps
 
 1.npm install
 2.npm i json-server  
