@@ -19,7 +19,6 @@ function App() {
         throw new Error('Something went wrong!');
       }
       const data = await response.json();
-      console.log(data);
       const loadedMovies = [];
 
       for (const key in data) {
@@ -43,17 +42,15 @@ function App() {
     fetchMoviesHandler();
   }, [fetchMoviesHandler]);
 
-  async function addMovieHandler(movie) {
-    const response = await fetch('http://localhost:3000/movies', {
+  const addMovieHandler = async (movie) => {
+    await fetch('http://localhost:3000/movies', {
       method: 'POST',
       body: JSON.stringify(movie),
       headers: {
         'Content-Type': 'application/json',
       },
     });
-    const data = await response.json();
-    console.log(data);
-  }
+  };
 
   const filteredMovies = movies.filter((movie) =>
     movie.title.toLowerCase().includes(searchTerm.toLowerCase())
