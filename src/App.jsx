@@ -53,7 +53,7 @@ function App() {
   };
 
   const filteredMovies = movies.filter((movie) =>
-    movie.title.toLowerCase().includes(searchTerm.toLowerCase())
+    movie.title.toLowerCase().includes(searchTerm.toLowerCase()),
   );
   let content = <p>Found no movies.</p>;
 

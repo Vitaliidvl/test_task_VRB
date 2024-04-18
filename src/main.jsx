@@ -23,5 +23,5 @@ const router = createBrowserRouter([
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <RouterProvider router={router} fallbackElement={<h1>Loading...</h1>} />
+  <RouterProvider router={router} fallbackElement={<h1>Loading...</h1>} />,
 );

@@ -16,9 +16,7 @@ function MovieDetail() {
   const typedMovieId = +movieId + 1;
 
   const onDeleteHandler = async () => {
-    const confirmDelete = window.confirm(
-      'Are you sure you want to delete this movie?'
-    );
+    const confirmDelete = window.confirm('Are you sure you want to delete this movie?');
     if (confirmDelete) {
       await fetch(`http://localhost:3000/movies/${typedMovieId}`, {
         method: 'DELETE',
@@ -45,22 +43,19 @@ function MovieDetail() {
   };
 
   const toggleFavorite = async () => {
-    const newFavoriteStatus = !isFavorite; // Calculate new favorite status
+    const newFavoriteStatus = !isFavorite;
     const fav = {
       ...movie,
       favorite: newFavoriteStatus,
     };
     try {
-      const response = await fetch(
-        `http://localhost:3000/movies/${typedMovieId}`,
-        {
-          method: 'PUT',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(fav),
-        }
-      );
+      const response = await fetch(`http://localhost:3000/movies/${typedMovieId}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(fav),
+      });
       if (!response.ok) {
         throw new Error('Failed to update favorite status');
       }
@@ -73,9 +68,7 @@ function MovieDetail() {
   useEffect(() => {
     const fetchMovie = async () => {
       try {
-        const response = await fetch(
-          `http://localhost:3000/movies/${typedMovieId}`
-        );
+        const response = await fetch(`http://localhost:3000/movies/${typedMovieId}`);
 
         if (!response.ok) {
           throw new Error('Failed to fetch movie');
@@ -83,7 +76,7 @@ function MovieDetail() {
 
         const data = await response.json();
         setMovie(data);
-        setIsFavorite(data.favorite); // Assuming there's an "isFavorite" property in the movie object
+        setIsFavorite(data.favorite);
         setIsLoading(false);
       } catch (error) {
         setError(error.message);
@@ -134,62 +127,48 @@ function MovieDetail() {
               type="text"
               id="title"
               value={editedMovie.title}
-              onChange={(e) =>
-                setEditedMovie({ ...editedMovie, title: e.target.value })
-              }
+              onChange={(e) => setEditedMovie({ ...editedMovie, title: e.target.value })}
             />
             <label htmlFor="description">Description</label>
             <textarea
               id="description"
               value={editedMovie.description}
-              onChange={(e) =>
-                setEditedMovie({ ...editedMovie, description: e.target.value })
-              }
+              onChange={(e) => setEditedMovie({ ...editedMovie, description: e.target.value })}
             />
             <label htmlFor="actors">Actors</label>
             <input
               type="text"
               id="actors"
               value={editedMovie.actors}
-              onChange={(e) =>
-                setEditedMovie({ ...editedMovie, actors: e.target.value })
-              }
+              onChange={(e) => setEditedMovie({ ...editedMovie, actors: e.target.value })}
             />
             <label htmlFor="director">Director</label>
             <input
               type="text"
               id="director"
               value={editedMovie.director}
-              onChange={(e) =>
-                setEditedMovie({ ...editedMovie, director: e.target.value })
-              }
+              onChange={(e) => setEditedMovie({ ...editedMovie, director: e.target.value })}
             />
             <label htmlFor="genre">Genre</label>
             <input
               type="text"
               id="genre"
               value={editedMovie.genre}
-              onChange={(e) =>
-                setEditedMovie({ ...editedMovie, genre: e.target.value })
-              }
+              onChange={(e) => setEditedMovie({ ...editedMovie, genre: e.target.value })}
             />
             <label htmlFor="rating">Rating</label>
             <input
               type="number"
               id="rating"
               value={editedMovie.rating}
-              onChange={(e) =>
-                setEditedMovie({ ...editedMovie, rating: e.target.value })
-              }
+              onChange={(e) => setEditedMovie({ ...editedMovie, rating: e.target.value })}
             />
             <label htmlFor="image">Image URL</label>
             <input
               type="text"
               id="image"
               value={editedMovie.image}
-              onChange={(e) =>
-                setEditedMovie({ ...editedMovie, image: e.target.value })
-              }
+              onChange={(e) => setEditedMovie({ ...editedMovie, image: e.target.value })}
             />
           </div>
           <button onClick={onSaveHandler} className={classes.button}>
